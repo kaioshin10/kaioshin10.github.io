@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thư viện ảnh cá nhân</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background: #f0f0f0; }
+        #login { margin-top: 100px; }
+        #gallery { display: none; margin-top: 20px; }
+        img { width: 300px; margin: 10px; border-radius: 8px; }
+        input[type="password"] { padding: 10px; width: 200px; font-size: 16px; }
+        button { padding: 10px 20px; font-size: 16px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div id="login">
+        <h2>Nhập mật khẩu để xem ảnh</h2>
+        <input type="password" id="password" placeholder="Mật khẩu">
+        <button onclick="checkPassword()">Đăng nhập</button>
+        <p id="error" style="color:red;"></p>
+    </div>
+
+    <div id="gallery">
+        <h2>Thư viện ảnh</h2>
+        <div id="images"></div>
+    </div>
+
+    <script>
+        // ===== Mật khẩu: Baongoc2011 =====
+        const STORED_HASH = "7c2c4e4e5e3a03cb6f5a1261cbd83d43779b7200e7e376ed29e1ec2655a4f3e4";
+
+        // ==== Danh sách ảnh, sửa URL thành ảnh bạn muốn
+        const IMAGES = [
+            "https://picsum.photos/id/1015/600/400",
+            "https://picsum.photos/id/1016/600/400",
+            "https://picsum.photos/id/1025/600/400"
+        ];
+
+        async function sha256(message) {
+            const msgBuffer = new TextEncoder().encode(message);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+
+        async function checkPassword() {
+            const input = document.getElementById("password").value;
+            const hash = await sha256(input);
+            if(hash === STORED_HASH){
+                document.getElementById("login").style.display = "none";
+                document.getElementById("gallery").style.display = "block";
+                const imagesDiv = document.getElementById("images");
+                imagesDiv.innerHTML = IMAGES.map(url => `<img src="${url}">`).join('');
+            } else {
+                document.getElementById("error").innerText = "Mật khẩu không đúng!";
+            }
+        }
+    </script>
+</body>
+</html>
