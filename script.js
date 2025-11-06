@@ -1,4 +1,4 @@
-// Dữ liệu và cấu hình
+// Cấu hình Ngày Kỷ Niệm
 const LOVE_DATE = new Date('2025-03-14T00:00:00').getTime(); // Ngày kỷ niệm: 14/03/2025
 
 // --- LOVE TIMER FUNCTION (Đồng hồ đếm ngày yêu nhau) ---
@@ -22,28 +22,38 @@ function updateLoveTimer() {
         `;
     }
 }
-setInterval(updateLoveTimer, 1000); // Cập nhật mỗi giây
+// Chạy hàm đếm ngược/xuôi mỗi giây
+setInterval(updateLoveTimer, 1000);
 
 
+// --- LOGIC CHÍNH (Chạy sau khi trang web tải xong) ---
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Logic Đăng nhập
+    
+    // --- 1. Logic Đăng nhập (Đã sửa lỗi không chuyển trang) ---
     const loginForm = document.getElementById('login-form');
     loginForm.addEventListener('submit', function(e) {
-        e.preventDefault();
+        e.preventDefault(); // NGĂN TẢI LẠI TRANG
+        
         const username = document.getElementById('username').value.trim();
         const password = document.getElementById('password').value.trim();
 
         // Kiểm tra mật khẩu mô phỏng
         if (username === 'Ngoc' && password === '1403') {
+            
+            // ẨN trang Đăng nhập và HIỆN trang Trang Chủ
             document.getElementById('login-page').classList.remove('active');
             document.getElementById('dashboard-page').classList.add('active');
-            updateLoveTimer(); 
+            
+            // Đảm bảo Trang Chủ hiển thị từ đầu trang (tránh cuộn lỗi)
+            window.scrollTo(0, 0); 
+            
+            updateLoveTimer(); // Khởi tạo Love Timer
         } else {
             alert('Mật khẩu bí mật không đúng. Vui lòng thử lại!');
         }
     });
 
-    // 2. Logic Chuyển trang (Navigation)
+    // --- 2. Logic Chuyển trang (Navigation) ---
     const navLinks = document.querySelectorAll('.nav-links a, .cta-button[data-page]');
     const contentSections = document.querySelectorAll('.content-section');
 
@@ -51,33 +61,40 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
             const targetPage = this.getAttribute('data-page');
-            const targetId = targetPage + '-section';
+            // Chuyển đổi tên trang thành ID section tương ứng
+            const targetId = targetPage + '-section'; 
 
+            // Ẩn tất cả nội dung
             contentSections.forEach(section => section.classList.remove('active'));
             navLinks.forEach(nav => nav.classList.remove('active'));
 
+            // Hiện nội dung được chọn
             const targetSection = document.getElementById(targetId);
             if (targetSection) {
                 targetSection.classList.add('active');
                 if (this.closest('.nav-links')) {
                     this.classList.add('active');
                 }
+                window.scrollTo(0, 0); // Cuộn lên đầu trang
             }
         });
     });
 
-    // 3. Logic Nhật Ký (Journal - Lưu tạm bằng LocalStorage)
+    // --- 3. Logic Nhật Ký (Journal - Lưu tạm bằng LocalStorage) ---
     const journalFormContainer = document.getElementById('journal-form-container');
     const journalList = document.getElementById('journal-list');
     const addJournalButton = document.getElementById('add-journal');
     const saveJournalButton = document.getElementById('save-journal');
 
+    // Nút Thêm Bài Viết
     addJournalButton.addEventListener('click', () => {
+        // Toggle (ẩn/hiện) form viết nhật ký
         journalFormContainer.style.display = (journalFormContainer.style.display === 'none' || journalFormContainer.style.display === '') ? 'block' : 'none';
         document.getElementById('journal-title').value = '';
         document.getElementById('journal-content').value = '';
     });
 
+    // Nút Lưu Nhật Ký
     saveJournalButton.addEventListener('click', () => {
         const title = document.getElementById('journal-title').value.trim();
         const content = document.getElementById('journal-content').value.trim();
@@ -90,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             let entries = JSON.parse(localStorage.getItem('journalEntries')) || [];
-            entries.unshift(newEntry);
+            entries.unshift(newEntry); // Thêm vào đầu danh sách
             localStorage.setItem('journalEntries', JSON.stringify(entries));
 
             alert('Bài nhật ký đã được lưu thành công!');
@@ -101,6 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Hàm hiển thị danh sách nhật ký
     function renderJournalEntries() {
         let entries = JSON.parse(localStorage.getItem('journalEntries')) || [];
         journalList.innerHTML = '';
@@ -120,13 +138,15 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     }
-    renderJournalEntries(); 
+    renderJournalEntries(); // Khởi tạo hiển thị nhật ký
     
-    // 4. Logic Wishlist & Goals (Lưu tạm bằng LocalStorage)
+    
+    // --- 4. Logic Wishlist & Goals (Lưu tạm bằng LocalStorage) ---
     const addWishlistButton = document.getElementById('add-wishlist');
     const wishlistInput = document.getElementById('wishlist-item');
     const wishlistList = document.getElementById('wishlist-list');
 
+    // Thêm mục tiêu mới
     addWishlistButton.addEventListener('click', () => {
         const itemText = wishlistInput.value.trim();
         if (itemText) {
@@ -147,6 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Hàm hiển thị danh sách Wishlist
     function renderWishlist() {
         let items = JSON.parse(localStorage.getItem('wishlistItems')) || [];
         wishlistList.innerHTML = '';
@@ -164,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 itemDiv.innerHTML = `
                     <span class="wishlist-text">${item.text}</span>
                     <div class="wishlist-actions">
-                        <button class="btn-complete" data-id="${item.id}">✅ Hoàn thành</button>
+                        <button class="btn-complete" data-id="${item.id}">${item.completed ? '↩️ Chưa xong' : '✅ Hoàn thành'}</button>
                         <button class="btn-delete" data-id="${item.id}">❌ Xóa</button>
                     </div>
                 `;
@@ -173,6 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Xử lý hành động (Hoàn thành/Xóa)
     wishlistList.addEventListener('click', function(e) {
         const target = e.target;
         const itemId = target.getAttribute('data-id');
@@ -181,19 +203,6 @@ document.addEventListener('DOMContentLoaded', () => {
             let items = JSON.parse(localStorage.getItem('wishlistItems')) || [];
             const index = items.findIndex(item => item.id == itemId);
 
-            if (target.classList.contains('btn-complete')) {
-                if (index !== -1) {
-                    items[index].completed = !items[index].completed;
-                }
-            } else if (target.classList.contains('btn-delete')) {
-                if (index !== -1) {
-                    items.splice(index, 1);
-                }
-            }
-            
-            localStorage.setItem('wishlistItems', JSON.stringify(items));
-            renderWishlist();
-        }
-    });
-    renderWishlist(); 
-});
+            if (index !== -1) {
+                if (target.classList.contains('btn-complete')) {
+                    // Đánh dấu hoàn thành / chưa
