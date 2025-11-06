@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The 1403 Portal</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css"> 
+    <title>The 1403 Portal - H&N</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -15,28 +14,28 @@
             <p class="portal-subtitle">Nơi lưu giữ những điều diệu kỳ của chúng ta</p>
             
             <form id="login-form" class="login-form">
-    
-    <div class="input-group">
-        <label for="username">Tên người dùng:</label> 
-        <input type="text" id="username" required>
-    </div>
-    
-    <div class="input-group">
-        <label for="password">Mật khẩu bí mật:</label> 
-        <input type="password" id="password" required>
-    </div>
-    
-    <button type="submit" class="login-button">Bước vào Cánh Cổng 🚪</button>
-</form>
+                
+                <div class="input-group">
+                    <label for="username">Tên người dùng (Ngọc):</label>
+                    <input type="text" id="username" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="password">Mật khẩu bí mật (Hưởng):</label>
+                    <input type="password" id="password" required>
+                </div>
+                
+                <button type="submit" class="login-button">Bước vào Cánh Cổng 🚪</button>
+            </form>
 
-            
             <p class="login-note">Chỉ dành cho H & N</p>
         </div>
     </div>
     
     <div id="dashboard-page" class="page">
+        
         <nav class="navbar">
-            <div class="logo">The 1403 Portal</div>
+            <h2 class="portal-logo">The 1403 Portal</h2>
             <ul class="nav-links">
                 <li><a href="#" data-page="hero" class="active">Trang Chủ</a></li>
                 <li><a href="#" data-page="gallery">Kỷ Niệm</a></li>
@@ -46,73 +45,61 @@
         </nav>
 
         <section id="hero-section" class="content-section active">
-            <header class="hero-header">
-                <video autoplay muted loop id="video-background">
-    <source src="placeholder.mp4" type="video/mp4"> 
-    
-    <source src="placeholder.mov" type="video/quicktime">
-    
-    Trình duyệt của bạn không hỗ trợ video HTML5.
-</video>
-
-                
-                <div class="pink-overlay"></div>
-                
-                <div class="hero-content">
-                    <h1 class="main-title">Ngọc yêu, đây là nơi tình yêu của chúng ta được lưu giữ</h1>
-                    
-                    <div id="love-timer" class="timer-box">
-                        Đang tải...
-                    </div>
-                    
-                    <a href="#" data-page="gallery" class="cta-button">Khám Phá Kỷ Niệm</a>
+            <video autoplay muted loop id="video-background">
+                <source src="placeholder.mp4" type="video/mp4">
+                Trình duyệt của bạn không hỗ trợ video HTML5.
+            </video>
+            
+            <div class="hero-content">
+                <h1 class="hero-title">Ngọc yêu,</h1>
+                <h2 class="hero-subtitle">Đây là nơi tình yêu của chúng ta được lưu giữ.</h2>
+                <div class="love-timer-container">
+                    <p>Chúng ta đã yêu nhau:</p>
+                    <div id="love-timer" class="love-timer">Đang đếm...</div>
                 </div>
-            </header>
-        </section>
-
-        <section id="journal-section" class="content-section">
-            <div class="section-container">
-                <h2 class="section-title">✍️ Nhật Ký Của Ngọc</h2>
-                <button id="add-journal" class="cta-button" style="margin-bottom: 20px;">+ Thêm Bài Viết Mới</button>
-                
-                <div id="journal-form-container" style="display: none; background: #FFF; padding: 20px; border-radius: 10px; margin-bottom: 30px;">
-                    <input type="text" id="journal-title" placeholder="Tiêu đề bài viết..." class="journal-input">
-                    <textarea id="journal-content" placeholder="Hôm nay em muốn kể gì cho anh nghe?..." class="journal-textarea"></textarea>
-                    <button id="save-journal" class="login-button" style="width: auto; padding: 10px 20px;">Lưu lại Kỷ Niệm</button>
-                </div>
-                
-                <div id="journal-list" class="list-container">
-                    <p class="placeholder-text">Chưa có bài viết nào được lưu. Hãy viết bài đầu tiên nhé!</p>
-                </div>
+                <button class="cta-button" data-page="journal">Viết Nhật Ký <span class="heart-icon">❤️</span></button>
             </div>
         </section>
 
         <section id="gallery-section" class="content-section">
-            <div class="section-container">
-                <h2 class="section-title">📸 Bộ Sưu Tập Kỷ Niệm</h2>
-                <p class="placeholder-text">Đây là nơi chúng ta sẽ xem lại những bức ảnh và video tuyệt vời nhất! (Chức năng này sẽ được phát triển sau).</p>
+            <h1 class="section-title">🖼️ Album Kỷ Niệm</h1>
+            <p>Nơi lưu giữ những khoảnh khắc đáng nhớ của chúng ta. (Bạn có thể thêm hình ảnh vào đây)</p>
+            </section>
+
+        <section id="journal-section" class="content-section">
+            <h1 class="section-title">📖 Nhật Ký Bí Mật</h1>
+            <p>Nơi Ngọc và Hưởng chia sẻ những tâm tư, suy nghĩ mỗi ngày.</p>
+            
+            <button id="add-journal" class="action-button">📝 Thêm Bài Viết Mới</button>
+            
+            <div id="journal-form-container" style="display: none;">
+                <input type="text" id="journal-title" placeholder="Tiêu đề bài viết...">
+                <textarea id="journal-content" placeholder="Hôm nay có gì vui, buồn, đáng nhớ?"></textarea>
+                <button id="save-journal" class="action-button primary">Lưu Nhật Ký</button>
             </div>
+            
+            <div id="journal-list" class="list-container">
+                </div>
         </section>
-        
+
         <section id="wishlist-section" class="content-section">
-            <div class="section-container">
-                <h2 class="section-title">✨ Wishlist & Mục Tiêu Chung</h2>
-                <div class="wishlist-input-area">
-                    <input type="text" id="wishlist-item" placeholder="Nhập mục tiêu mới của H & N (Ví dụ: Du lịch Đà Lạt 2026)" class="journal-input">
-                    <button id="add-wishlist" class="cta-button" style="width: auto; padding: 10px 20px;">Thêm Mục Tiêu</button>
-                </div>
-                
-                <div id="wishlist-list" class="list-container">
-                    <p class="placeholder-text">Chưa có mục tiêu nào được thêm. Hãy cùng nhau lập kế hoạch nhé!</p>
-                </div>
+            <h1 class="section-title">🎯 Wishlist & Mục Tiêu Chung</h1>
+            <p>Những điều chúng ta muốn cùng nhau thực hiện trong tương lai.</p>
+            
+            <div class="wishlist-input-container">
+                <input type="text" id="wishlist-item" placeholder="Nhập mục tiêu mới...">
+                <button id="add-wishlist" class="action-button">➕ Thêm</button>
             </div>
+            
+            <div id="wishlist-list" class="list-container">
+                </div>
         </section>
-        
+
         <footer class="footer">
-            <p>© 2025 The 1403 Portal | Tình yêu bắt đầu từ 14/03/2025</p>
+            <p>© 2025. Made with love for Nguyễn Bảo Ngọc, by Trần Chí Hưởng.</p>
         </footer>
     </div>
-    
+
     <script src="script.js"></script>
 </body>
 </html>
