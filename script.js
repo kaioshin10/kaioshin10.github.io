@@ -1,4 +1,4 @@
-// Cấu hình Ngày Kỷ Niệm
+// // Cấu hình Ngày Kỷ Niệm
 const LOVE_DATE = new Date('2025-03-14T00:00:00').getTime(); // Ngày kỷ niệm: 14/03/2025
 
 // --- LOVE TIMER FUNCTION (Đồng hồ đếm ngày yêu nhau) ---
@@ -6,7 +6,6 @@ function updateLoveTimer() {
     const now = new Date().getTime();
     const distance = now - LOVE_DATE;
 
-    // Tính toán thời gian
     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
     const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
@@ -22,8 +21,7 @@ function updateLoveTimer() {
         `;
     }
 }
-// Chạy hàm đếm ngược/xuôi mỗi giây
-window.updateLoveTimer = updateLoveTimer; // Gán ra global scope để có thể gọi từ bên ngoài
+window.updateLoveTimer = updateLoveTimer;
 setInterval(updateLoveTimer, 1000);
 
 
@@ -35,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const loginPage = document.getElementById('login-page');
     const dashboardPage = document.getElementById('dashboard-page');
 
-    if (loginForm) {
+    if (loginForm && loginPage && dashboardPage) {
         loginForm.addEventListener('submit', function(e) {
             e.preventDefault(); 
             
@@ -44,12 +42,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (username === 'Ngoc' && password === '1403') {
                 
-                // ẨN trang Đăng nhập và HIỆN trang Trang Chủ
                 loginPage.classList.remove('active');
                 dashboardPage.classList.add('active');
                 
                 window.scrollTo(0, 0); 
-                updateLoveTimer(); // Khởi tạo Love Timer lần đầu
+                updateLoveTimer(); 
             } else {
                 alert('Mật khẩu bí mật không đúng. Vui lòng thử lại!');
             }
@@ -80,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // --- 3. Logic Nhật Ký (Journal - Lưu tạm bằng LocalStorage) ---
+    // --- 3. Logic Nhật Ký (Journal) ---
     const journalFormContainer = document.getElementById('journal-form-container');
     const journalList = document.getElementById('journal-list');
     const addJournalButton = document.getElementById('add-journal');
@@ -142,7 +139,7 @@ document.addEventListener('DOMContentLoaded', function() {
     renderJournalEntries(); 
     
     
-    // --- 4. Logic Wishlist & Goals (Lưu tạm bằng LocalStorage) ---
+    // --- 4. Logic Wishlist & Goals ---
     const addWishlistButton = document.getElementById('add-wishlist');
     const wishlistInput = document.getElementById('wishlist-item');
     const wishlistList = document.getElementById('wishlist-list');
@@ -220,4 +217,3 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     renderWishlist(); 
 });
-
