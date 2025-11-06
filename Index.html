@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Web Đặc Biệt Dành Cho Nguyễn Bảo Ngọc</title>
+    <style>
+        /* CSS cho giao diện */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f8ff; /* Màu nền nhẹ nhàng */
+            color: #333;
+        }
+
+        .container {
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Màn hình Đăng nhập */
+        #login-page h2 {
+            color: #ff69b4; /* Hồng dễ thương */
+            margin-bottom: 25px;
+        }
+
+        #login-form input[type="text"],
+        #login-form input[type="password"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        #login-form button {
+            background-color: #ff69b4;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        #login-form button:hover {
+            background-color: #e55c9d;
+        }
+
+        #error-message {
+            color: red;
+            margin-top: 10px;
+            font-size: 0.9em;
+            display: none;
+        }
+
+        /* Màn hình Thư viện Ảnh */
+        #gallery-page {
+            display: none; /* Ẩn cho đến khi đăng nhập thành công */
+            text-align: left;
+        }
+
+        #gallery-page h2 {
+            color: #ff69b4;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .photo-grid img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            object-fit: cover;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .photo-grid img:hover {
+            transform: scale(1.05);
+        }
+
+        #logout-button {
+            float: right;
+            background-color: #aaa;
+            margin-top: 15px;
+        }
+
+        #logout-button:hover {
+            background-color: #999;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div id="login-page">
+            <h2>✨ Cổng Đặc Quyền Của Ngọc ✨</h2>
+            <form id="login-form">
+                <input type="text" id="username" placeholder="Tên đăng nhập" required>
+                <input type="password" id="password" placeholder="Mật khẩu bí mật" required>
+                <button type="submit">Đăng Nhập</button>
+            </form>
+            <p id="error-message">Sai tên đăng nhập hoặc mật khẩu. Thử lại nhé!</p>
+        </div>
+
+        <div id="gallery-page">
+            <h2>💌 Thư Viện Ảnh Của Chúng Ta 💖</h2>
+            <div class="photo-grid">
+                <img src="https://picsum.photos/id/237/200/200" alt="Ảnh 1 (Ví dụ)">
+                <img src="https://picsum.photos/id/1084/200/200" alt="Ảnh 2 (Ví dụ)">
+                <img src="https://picsum.photos/id/292/200/200" alt="Ảnh 3 (Ví dụ)">
+                <img src="https://picsum.photos/id/29/200/200" alt="Ảnh 4 (Ví dụ)">
+            </div>
+            <button id="logout-button">Đăng Xuất</button>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript cho logic đăng nhập
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault(); // Ngăn chặn form submit thông thường
+
+            const correctUsername = 'ngoc'; // Tên đăng nhập
+            const correctPassword = 'emyeuanh'; // Mật khẩu
+
+            const usernameInput = document.getElementById('username').value;
+            const passwordInput = document.getElementById('password').value;
+            const errorMessage = document.getElementById('error-message');
+            const loginPage = document.getElementById('login-page');
+            const galleryPage = document.getElementById('gallery-page');
+
+            if (usernameInput === correctUsername && passwordInput === correctPassword) {
+                // Đăng nhập thành công
+                localStorage.setItem('isAuthenticated', 'true'); // Lưu trạng thái
+                loginPage.style.display = 'none';
+                galleryPage.style.display = 'block';
+                errorMessage.style.display = 'none';
+                document.body.style.justifyContent = 'flex-start'; // Điều chỉnh layout cho trang ảnh
+                document.body.style.alignItems = 'flex-start';
+                document.querySelector('.container').style.maxWidth = '800px';
+                document.querySelector('.container').style.width = '90%';
+            } else {
+                // Đăng nhập thất bại
+                errorMessage.style.display = 'block';
+            }
+        });
+
+        // Xử lý đăng xuất
+        document.getElementById('logout-button').addEventListener('click', function() {
+            localStorage.setItem('isAuthenticated', 'false');
+            window.location.reload(); // Tải lại trang để quay về màn hình đăng nhập
+        });
+
+        // Kiểm tra trạng thái khi tải trang (giả lập)
+        window.onload = function() {
+            const isAuthenticated = localStorage.getItem('isAuthenticated');
+            const loginPage = document.getElementById('login-page');
+            const galleryPage = document.getElementById('gallery-page');
+            
+            if (isAuthenticated === 'true') {
+                loginPage.style.display = 'none';
+                galleryPage.style.display = 'block';
+                document.body.style.justifyContent = 'flex-start';
+                document.body.style.alignItems = 'flex-start';
+                document.querySelector('.container').style.maxWidth = '800px';
+                document.querySelector('.container').style.width = '90%';
+            } else {
+                loginPage.style.display = 'block';
+                galleryPage.style.display = 'none';
+            }
+        }
+    </script>
+
+</body>
+</html>
