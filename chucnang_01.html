@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chức Năng 01 - Album Tình Yêu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="navbar">
+        <a href="dashboard.html" class="nav-brand">HỆ THỐNG CỦA HƯỞNG ✨</a>
+        <div class="nav-links">
+            <a href="dashboard.html">Tổng Quan</a>
+            <a href="chucnang_01.html" class="active">Album 💖</a>
+            <a href="chucnang_02.html">Nhật Ký 📝</a>
+            <a href="chucnang_10.html">Settings</a>
+        </div>
+        <a href="#" class="logout-btn" onclick="dangXuat()">Đăng Xuất</a>
+    </div>
+
+    <div class="container">
+        <h2>💖 Chức Năng 01: Album Tình Yêu Của Hưởng & Ngọc</h2>
+        <p>Đây là nội dung dành riêng cho chức năng Album. Bạn có thể chèn các hình ảnh và kỷ niệm vào đây.</p>
+        <p class="text-center">[attachment_0](attachment)</p>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Copy hàm đăng xuất từ dashboard
+        function dangXuat() {
+            sessionStorage.removeItem('loggedIn'); 
+            window.location.href = "index.html"; 
+        }
+    </script>
+</body>
+</html>
