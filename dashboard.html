@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Trang Tổng Quan</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="navbar">
+        <a href="dashboard.html" class="nav-brand">HỆ THỐNG CỦA HƯỞNG ✨</a>
+        <div class="nav-links">
+            <a href="dashboard.html" class="active">Tổng Quan</a>
+            <a href="chucnang_01.html">Album 💖</a>
+            <a href="chucnang_02.html">Nhật Ký 📝</a>
+            <a href="chucnang_03.html">Sở Thích</a>
+            <a href="chucnang_04.html">Công Việc</a>
+            <a href="chucnang_05.html">Bạn Bè</a>
+            <a href="chucnang_06.html">Mục Tiêu</a>
+            <a href="chucnang_07.html">Sức Khỏe</a>
+            <a href="chucnang_08.html">Thống Kê</a>
+            <a href="chucnang_09.html">Ghi Chú</a>
+            <a href="chucnang_10.html">Settings</a>
+        </div>
+        <a href="#" class="logout-btn" onclick="dangXuat()">Đăng Xuất</a>
+    </div>
+
+    <div class="container">
+        <h2>👋 Chào Mừng, Trần Chí Hưởng!</h2>
+        <p>Bạn đã đăng nhập thành công. Đây là trang tổng quan các chức năng cá nhân của bạn.</p>
+
+        <h3>Danh Sách 10 Chức Năng</h3>
+        <div class="feature-grid">
+            <div class="feature-card"><h3>1. Album 💖</h3><p>Xem lại hình ảnh, video kỷ niệm.</p></div>
+            <div class="feature-card"><h3>2. Nhật Ký 📝</h3><p>Ghi lại những khoảnh khắc đáng nhớ.</p></div>
+            <div class="feature-card"><h3>3. Sở Thích</h3><p>Quản lý các hoạt động yêu thích.</p></div>
+            <div class="feature-card"><h3>4. Công Việc</h3><p>Theo dõi các dự án, nhiệm vụ.</p></div>
+            <div class="feature-card"><h3>5. Bạn Bè</h3><p>Danh sách liên lạc quan trọng.</p></div>
+            <div class="feature-card"><h3>6. Mục Tiêu</h3><p>Quản lý mục tiêu ngắn và dài hạn.</p></div>
+            <div class="feature-card"><h3>7. Sức Khỏe</h3><p>Theo dõi dữ liệu tập luyện, ăn uống.</p></div>
+            <div class="feature-card"><h3>8. Thống Kê</h3><p>Phân tích các số liệu cá nhân.</p></div>
+            <div class="feature-card"><h3>9. Ghi Chú</h3><p>Nơi lưu trữ các ý tưởng nhanh.</p></div>
+            <div class="feature-card"><h3>10. Settings</h3><p>Cài đặt tài khoản và giao diện.</p></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        function dangXuat() {
+            sessionStorage.removeItem('loggedIn'); // Xóa trạng thái đăng nhập
+            window.location.href = "index.html"; // Chuyển về trang đăng nhập
+        }
+    </script>
+</body>
+</html>
