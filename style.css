@@ -1,0 +1,301 @@
+/* style.css (Phiên bản Hoàn Chỉnh: Responsive, Fix Lỗi Mobile, Hiệu ứng Click) */
+
+:root {
+    --primary-bg: #2c3e50; /* Nền thanh điều hướng (Xanh đậm) */
+    --secondary-bg: #34495e; /* Nền phụ */
+    --accent-color: #3498db; /* Màu nhấn chính (Xanh dương) */
+    --danger-color: #e74c3c; /* Màu cho nút đăng xuất (Đỏ) */
+    --text-light: #ecf0f1; /* Màu chữ sáng */
+    --text-dark: #2c3e50; /* Màu chữ tối */
+    --card-bg: #ffffff; /* Nền card */
+    --border-color: #bdc3c7; /* Màu viền */
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--text-light);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+/* --- Global Utilities --- */
+.container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+    box-sizing: border-box;
+}
+
+h2, h3 {
+    color: var(--primary-bg);
+}
+
+h2 {
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+}
+
+/* --- Navigation Bar (Thanh Điều hướng) --- */
+.navbar {
+    background-color: var(--primary-bg);
+    padding: 15px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-brand {
+    font-size: 1.6em;
+    font-weight: bold;
+    color: var(--text-light) !important;
+    text-decoration: none;
+    padding: 0;
+    margin-right: 20px;
+    flex-shrink: 0;
+}
+
+.nav-links {
+    display: flex;
+    flex-grow: 1;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+
+.navbar a {
+    color: var(--text-light);
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.1s; /* Thêm transform */
+    font-size: 0.95em;
+    white-space: nowrap;
+    user-select: none;
+}
+
+.navbar a:hover {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.navbar a.active {
+    background-color: var(--accent-color);
+    color: white;
+    font-weight: bold;
+}
+
+/* HIỆU ỨNG CLICK CHO LIÊN KẾT NAV BAR */
+.navbar a:active {
+    transform: translateY(1px); 
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) inset; 
+}
+
+.logout-btn {
+    background-color: var(--danger-color);
+    color: white !important;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-left: auto;
+    transition: background-color 0.3s ease, transform 0.1s;
+    flex-shrink: 0;
+    user-select: none;
+}
+
+.logout-btn:hover {
+    background-color: #c0392b;
+}
+
+/* HIỆU ỨNG CLICK CHO NÚT ĐĂNG XUẤT */
+.logout-btn:active {
+    transform: translateY(2px);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) inset;
+}
+
+/* --- Login Form --- */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--primary-bg), var(--accent-color));
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.login-box {
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.login-box h2 {
+    color: var(--accent-color);
+    margin-top: 0;
+    border-bottom: none;
+    margin-bottom: 30px;
+}
+
+.login-box label {
+    display: block;
+    text-align: left;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--text-dark);
+}
+
+.login-box input[type="text"],
+.login-box input[type="password"] {
+    width: calc(100% - 24px);
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 1em;
+}
+
+.login-box button[type="submit"] {
+    background-color: var(--accent-color);
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.1s;
+    user-select: none;
+}
+
+.login-box button[type="submit"]:hover {
+    background-color: #2980b9;
+}
+
+/* HIỆU ỨNG CLICK CHO NÚT ĐĂNG NHẬP */
+.login-box button[type="submit"]:active {
+    transform: scale(0.98); 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2) inset;
+}
+
+.login-box p {
+    margin-top: 25px;
+    font-size: 0.9em;
+    color: #6c7a89;
+}
+
+
+/* --- Feature Grid (Các Card) --- */
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.feature-card {
+    background: var(--card-bg);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    border-left: 5px solid var(--accent-color);
+    cursor: pointer;
+    user-select: none;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+/* HIỆU ỨNG CLICK CHO CARD CHỨC NĂNG */
+.feature-card:active {
+    transform: scale(0.99); 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2) inset;
+    opacity: 0.9;
+}
+
+
+.feature-card h3 {
+    color: var(--accent-color);
+    margin-top: 0;
+    font-size: 1.3em;
+    margin-bottom: 10px;
+}
+
+.feature-card p {
+    color: #555;
+    font-size: 0.9em;
+}
+
+/* --- Responsive Design for Smaller Screens (Đã FIX LỖI) --- */
+@media (max-width: 992px) {
+    .nav-links {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column; 
+        align-items: stretch;
+        padding: 10px 15px;
+    }
+
+    .nav-brand {
+        text-align: center;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .nav-links {
+        /* Đã sửa: Cho các liên kết nằm trên một hàng (khi màn hình nhỏ) */
+        flex-direction: row; 
+        align-items: center;
+        justify-content: center; 
+        flex-wrap: wrap; 
+        width: 100%;
+        margin-bottom: 10px;
+        gap: 8px; 
+    }
+
+    .navbar a {
+        /* Đã sửa: Bỏ width: 100% để nút không chiếm hết màn hình */
+        text-align: center;
+        margin: 2px 0;
+        box-sizing: border-box;
+        font-size: 0.9em; 
+    }
+
+    .logout-btn {
+        width: 100%; 
+        margin-left: 0;
+        margin-top: 5px;
+        text-align: center;
+    }
+    
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .container {
+        padding: 15px;
+    }
+}
