@@ -1,14 +1,15 @@
-/* style.css (Phiên bản Hoàn Chỉnh: Hamburger Menu, Responsive, Click Effects) */
+/* style.css (Phiên bản Hoàn Chỉnh: Tông Hồng/Tím, Hamburger Menu, Click Effects) */
 
 :root {
-    --primary-bg: #2c3e50;
-    --secondary-bg: #34495e;
-    --accent-color: #3498db;
-    --danger-color: #e74c3c;
-    --text-light: #ecf0f1;
-    --text-dark: #2c3e50;
-    --card-bg: #ffffff;
-    --border-color: #bdc3c7;
+    /* CÁC BIẾN MÀU ĐÃ ĐƯỢC CHUYỂN SANG HỒNG/TÍM */
+    --primary-bg: #8e44ad;      /* Nền thanh điều hướng (Tím Sẫm) */
+    --secondary-bg: #9b59b6;    /* Nền phụ (Tím Nhạt hơn, dùng cho menu mobile) */
+    --accent-color: #e84393;    /* Màu nhấn chính (Hồng Đậm/Đỏ Hồng) - Dùng cho nút Đăng nhập, active link */
+    --danger-color: #c0392b;    /* Màu cho nút đăng xuất (Đỏ Cà Chua) */
+    --text-light: #ecf0f1;      /* Màu chữ sáng */
+    --text-dark: #2c3e50;       /* Màu chữ tối */
+    --card-bg: #ffffff;         /* Nền card */
+    --border-color: #bdc3c7;    /* Màu viền */
 }
 
 body {
@@ -29,18 +30,18 @@ body {
 }
 
 h2, h3 {
-    color: var(--primary-bg);
+    color: var(--primary-bg); /* Chữ tiêu đề dùng màu Tím Sẫm */
 }
 
 h2 {
-    border-bottom: 2px solid var(--accent-color);
+    border-bottom: 2px solid var(--accent-color); /* Viền dưới dùng màu Hồng */
     padding-bottom: 10px;
     margin-bottom: 25px;
 }
 
 /* --- Navigation Bar (Thanh Điều hướng) --- */
 .navbar {
-    background-color: var(--primary-bg);
+    background-color: var(--primary-bg); /* Nền Tím Sẫm */
     padding: 15px 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     display: flex;
@@ -80,11 +81,11 @@ h2 {
 }
 
 .navbar a:hover {
-    background-color: var(--accent-color);
+    background-color: var(--secondary-bg); /* Hover dùng màu Tím Nhạt */
 }
 
 .navbar a.active {
-    background-color: var(--accent-color);
+    background-color: var(--accent-color); /* Active dùng màu Hồng */
     font-weight: bold;
 }
 
@@ -96,7 +97,7 @@ h2 {
 
 /* NÚT ĐĂNG XUẤT (Vị trí desktop) */
 .logout-btn {
-    background-color: var(--danger-color);
+    background-color: var(--danger-color); /* Màu Đỏ */
     color: white !important;
     border: none;
     padding: 10px 15px;
@@ -124,13 +125,14 @@ h2 {
     line-height: 1;
 }
 
-/* --- Login Form --- (Giữ nguyên) */
+/* --- Login Form --- */
 .login-container {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(135deg, var(--primary-bg), var(--accent-color));
+    /* Nền Gradient Hồng/Tím */
+    background: linear-gradient(135deg, var(--primary-bg), var(--accent-color)); 
     padding: 20px;
     box-sizing: border-box;
 }
@@ -146,7 +148,7 @@ h2 {
 }
 
 .login-box h2 {
-    color: var(--accent-color);
+    color: var(--accent-color); /* Tiêu đề dùng màu Hồng */
     margin-top: 0;
     border-bottom: none;
     margin-bottom: 30px;
@@ -172,7 +174,7 @@ h2 {
 }
 
 .login-box button[type="submit"] {
-    background-color: var(--accent-color);
+    background-color: var(--accent-color); /* Nút Đăng nhập dùng màu Hồng */
     color: white;
     padding: 15px 20px;
     border: none;
@@ -186,7 +188,7 @@ h2 {
 }
 
 .login-box button[type="submit"]:hover {
-    background-color: #2980b9;
+    background-color: #c44d97; /* Màu Hồng đậm hơn khi hover */
 }
 
 .login-box button[type="submit"]:active {
@@ -216,7 +218,7 @@ h2 {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-align: center;
-    border-left: 5px solid var(--accent-color);
+    border-left: 5px solid var(--accent-color); /* Điểm nhấn viền màu Hồng */
     cursor: pointer;
     user-select: none;
 }
@@ -234,7 +236,7 @@ h2 {
 
 
 .feature-card h3 {
-    color: var(--accent-color);
+    color: var(--accent-color); /* Tiêu đề card dùng màu Hồng */
     margin-top: 0;
     font-size: 1.3em;
     margin-bottom: 10px;
@@ -263,7 +265,7 @@ h2 {
         display: none; 
         flex-direction: column;
         width: 100%;
-        background-color: var(--secondary-bg);
+        background-color: var(--secondary-bg); /* Nền menu Tím Nhạt */
         position: absolute;
         top: 60px; 
         left: 0;
@@ -293,7 +295,7 @@ h2 {
     }
     
     .nav-links a:hover {
-        background-color: var(--primary-bg);
+        background-color: var(--primary-bg); /* Hover dùng màu Tím Sẫm hơn */
     }
     
     .logout-btn {
