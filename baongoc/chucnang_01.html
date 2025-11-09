@@ -3,34 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chức Năng 01 - Album Tình Yêu</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Chức Năng 1 - Album 💖</title>
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
+
     <div class="navbar">
         <a href="dashboard.html" class="nav-brand">HỆ THỐNG CỦA HƯỞNG ✨</a>
-        <div class="nav-links">
+        
+        <button class="menu-toggle" aria-expanded="false" aria-controls="main-nav-links">
+            ☰
+        </button>
+        
+        <div class="nav-links" id="main-nav-links">
             <a href="dashboard.html">Tổng Quan</a>
-            <a href="chucnang_01.html" class="active">Album 💖</a>
+            <a href="chucnang_01.html" class="active">Album 💖</a> 
             <a href="chucnang_02.html">Nhật Ký 📝</a>
+            <a href="chucnang_03.html">Sở Thích</a>
+            <a href="chucnang_04.html">Công Việc</a>
+            <a href="chucnang_05.html">Bạn Bè</a>
+            <a href="chucnang_06.html">Mục Tiêu</a>
+            <a href="chucnang_07.html">Sức Khỏe</a>
+            <a href="chucnang_08.html">Thống Kê</a>
+            <a href="chucnang_09.html">Ghi Chú</a>
             <a href="chucnang_10.html">Settings</a>
+
+            <a href="#" class="logout-btn" onclick="dangXuat()">Đăng Xuất</a>
         </div>
-        <a href="#" class="logout-btn" onclick="dangXuat()">Đăng Xuất</a>
     </div>
-
     <div class="container">
-        <h2>💖 Chức Năng 01: Album Tình Yêu Của Hưởng & Ngọc</h2>
-        <p>Đây là nội dung dành riêng cho chức năng Album. Bạn có thể chèn các hình ảnh và kỷ niệm vào đây.</p>
-        <p class="text-center">[attachment_0](attachment)</p>
-    </div>
+        <h2 style="color: var(--accent-color);">💖 ALBUM KỶ NIỆM VỚI BẢO NGỌC 💖</h2>
+        <p>Đây là những khoảnh khắc đáng nhớ nhất của chúng ta, Hưởng và Ngọc. Hãy cùng xem lại nhé!</p>
 
-    <script src="script.js"></script>
+        <div class="video-section" style="margin-top: 30px; text-align: center;">
+            <h3 style="color: var(--primary-bg);">Video Mở Đầu Lãng Mạn</h3>
+            
+            <video 
+                width="100%" 
+                controls 
+                autoplay 
+                loop 
+                muted 
+                style="max-width: 600px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.15); margin-bottom: 10px;"
+            >
+                <source src="placeholder.mov" type="video/mp4">
+                Trình duyệt của bạn không hỗ trợ thẻ video.
+            </video>
+
+            <p style="font-size: 0.9em; color: #7f8c8d;">
+                *Video được thiết lập tự động phát (autoplay). Nếu video không có tiếng, vui lòng nhấn biểu tượng loa trên trình phát để bật âm thanh.
+            </p>
+        </div>
+
+        <h3 style="color: var(--primary-bg); margin-top: 50px;">Hình Ảnh Của Đôi Ta</h3>
+        <p>Bạn có thể sử dụng các thẻ `<img>` tại đây để hiển thị ảnh.</p>
+        </div>
+
     <script>
-        // Copy hàm đăng xuất từ dashboard
         function dangXuat() {
             sessionStorage.removeItem('loggedIn'); 
-            window.location.href = "index.html"; 
+            // Đường dẫn đã sửa: trỏ ra thư mục gốc
+            window.location.href = "../index.html"; 
         }
     </script>
+    <script src="../script.js"></script>
 </body>
 </html>
