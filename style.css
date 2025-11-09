@@ -1,14 +1,14 @@
-/* style.css (Phiên bản Hoàn Chỉnh: Responsive, Fix Lỗi Mobile, Hiệu ứng Click) */
+/* style.css (Phiên bản Hoàn Chỉnh: Hamburger Menu, Responsive, Click Effects) */
 
 :root {
-    --primary-bg: #2c3e50; /* Nền thanh điều hướng (Xanh đậm) */
-    --secondary-bg: #34495e; /* Nền phụ */
-    --accent-color: #3498db; /* Màu nhấn chính (Xanh dương) */
-    --danger-color: #e74c3c; /* Màu cho nút đăng xuất (Đỏ) */
-    --text-light: #ecf0f1; /* Màu chữ sáng */
-    --text-dark: #2c3e50; /* Màu chữ tối */
-    --card-bg: #ffffff; /* Nền card */
-    --border-color: #bdc3c7; /* Màu viền */
+    --primary-bg: #2c3e50;
+    --secondary-bg: #34495e;
+    --accent-color: #3498db;
+    --danger-color: #e74c3c;
+    --text-light: #ecf0f1;
+    --text-dark: #2c3e50;
+    --card-bg: #ffffff;
+    --border-color: #bdc3c7;
 }
 
 body {
@@ -46,7 +46,6 @@ h2 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -57,15 +56,13 @@ h2 {
     font-weight: bold;
     color: var(--text-light) !important;
     text-decoration: none;
-    padding: 0;
-    margin-right: 20px;
     flex-shrink: 0;
 }
 
+/* KHỐI LIÊN KẾT CHÍNH (Ẩn trên Mobile) */
 .nav-links {
     display: flex;
     flex-grow: 1;
-    flex-wrap: wrap;
     justify-content: flex-start;
     align-items: center;
     gap: 10px;
@@ -76,7 +73,7 @@ h2 {
     text-decoration: none;
     padding: 10px 15px;
     border-radius: 6px;
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.1s; /* Thêm transform */
+    transition: background-color 0.3s ease, transform 0.1s;
     font-size: 0.95em;
     white-space: nowrap;
     user-select: none;
@@ -84,21 +81,20 @@ h2 {
 
 .navbar a:hover {
     background-color: var(--accent-color);
-    color: white;
 }
 
 .navbar a.active {
     background-color: var(--accent-color);
-    color: white;
     font-weight: bold;
 }
 
-/* HIỆU ỨNG CLICK CHO LIÊN KẾT NAV BAR */
+/* Hiệu ứng Click */
 .navbar a:active {
     transform: translateY(1px); 
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) inset; 
 }
 
+/* NÚT ĐĂNG XUẤT (Vị trí desktop) */
 .logout-btn {
     background-color: var(--danger-color);
     color: white !important;
@@ -111,18 +107,24 @@ h2 {
     flex-shrink: 0;
     user-select: none;
 }
-
-.logout-btn:hover {
-    background-color: #c0392b;
-}
-
-/* HIỆU ỨNG CLICK CHO NÚT ĐĂNG XUẤT */
 .logout-btn:active {
     transform: translateY(2px);
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) inset;
 }
 
-/* --- Login Form --- */
+/* NÚT HAMBURGER (ẨN theo mặc định trên Desktop) */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.8em;
+    cursor: pointer;
+    padding: 5px 10px;
+    line-height: 1;
+}
+
+/* --- Login Form --- (Giữ nguyên) */
 .login-container {
     display: flex;
     justify-content: center;
@@ -187,7 +189,6 @@ h2 {
     background-color: #2980b9;
 }
 
-/* HIỆU ỨNG CLICK CHO NÚT ĐĂNG NHẬP */
 .login-box button[type="submit"]:active {
     transform: scale(0.98); 
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2) inset;
@@ -225,7 +226,6 @@ h2 {
     box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
 }
 
-/* HIỆU ỨNG CLICK CHO CARD CHỨC NĂNG */
 .feature-card:active {
     transform: scale(0.99); 
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2) inset;
@@ -245,7 +245,7 @@ h2 {
     font-size: 0.9em;
 }
 
-/* --- Responsive Design for Smaller Screens (Đã FIX LỖI) --- */
+/* --- Responsive Design for Smaller Screens (FIX LỖI & HAMBURGER) --- */
 @media (max-width: 992px) {
     .nav-links {
         justify-content: center;
@@ -254,40 +254,51 @@ h2 {
 
 @media (max-width: 768px) {
     .navbar {
-        flex-direction: column; 
-        align-items: stretch;
-        padding: 10px 15px;
-    }
-
-    .nav-brand {
-        text-align: center;
-        margin-right: 0;
-        margin-bottom: 10px;
-    }
-
-    .nav-links {
-        /* Đã sửa: Cho các liên kết nằm trên một hàng (khi màn hình nhỏ) */
         flex-direction: row; 
         align-items: center;
-        justify-content: center; 
-        flex-wrap: wrap; 
+        padding: 10px 15px;
+    }
+    
+    .nav-links {
+        display: none; 
+        flex-direction: column;
         width: 100%;
-        margin-bottom: 10px;
-        gap: 8px; 
+        background-color: var(--secondary-bg);
+        position: absolute;
+        top: 60px; 
+        left: 0;
+        padding: 10px 0;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        z-index: 999;
+        gap: 0;
+    }
+    
+    /* HIỂN THỊ MENU KHI CÓ CLASS 'active' */
+    .nav-links.active {
+        display: flex;
+    }
+    
+    /* HIỂN THỊ NÚT HAMBURGER */
+    .menu-toggle {
+        display: block; 
+        margin-left: auto;
     }
 
-    .navbar a {
-        /* Đã sửa: Bỏ width: 100% để nút không chiếm hết màn hình */
-        text-align: center;
-        margin: 2px 0;
-        box-sizing: border-box;
-        font-size: 0.9em; 
+    .nav-links a {
+        width: 100%;
+        text-align: left;
+        padding: 12px 20px;
+        margin: 0;
+        border-radius: 0;
     }
-
+    
+    .nav-links a:hover {
+        background-color: var(--primary-bg);
+    }
+    
     .logout-btn {
-        width: 100%; 
-        margin-left: 0;
-        margin-top: 5px;
+        width: calc(100% - 40px); 
+        margin: 10px 20px;
         text-align: center;
     }
     
