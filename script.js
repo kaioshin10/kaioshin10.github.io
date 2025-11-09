@@ -1,7 +1,7 @@
 // script.js
 
 // Dữ liệu bí mật để đăng nhập (Client-side check)
-const USERNAME_BIMAT = "Huongngoc";
+const USERNAME_BIMAT = "Baongoc";
 const PASSWORD_BIMAT = "ngoc2011"; 
 
 function xuLyDangNhap(event) {
