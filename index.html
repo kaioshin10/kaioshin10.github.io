@@ -5,21 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng Nhập - Hệ Thống Cá Nhân</title>
     <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    </head>
+<body class="dark-body"> 
     <div class="login-container">
-        <div class="login-box">
-            <h2>ĐĂNG NHẬP HỆ THỐNG</h2>
+        <div class="login-box glow-effect"> 
+            
+            <h2 class="neon-title">ĐĂNG NHẬP HỆ THỐNG</h2>
+            
             <form id="login-form">
-                <label for="username">Tên người dùng:</label>
-                <input type="text" id="username" name="username" required>
+                <div class="input-group">
+                    <input type="text" id="username" name="username" placeholder="Tên người dùng" required>
+                </div>
                 
-                <label for="password">Mật khẩu:</label>
-                <input type="password" id="password" name="password" required>
+                <div class="input-group">
+                    <input type="password" id="password" name="password" placeholder="Mật khẩu" required>
+                </div>
                 
-                <button type="submit">Đăng Nhập</button>
+                <button type="submit" class="neon-button">Đăng Nhập</button>
             </form>
-          
+            
+            <p class="login-tip">/p>
         </div>
     </div>
     <script src="script.js"></script>
