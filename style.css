@@ -1,0 +1,357 @@
+/* style.css (Phiên bản HOÀN CHỈNH) */
+
+:root {
+    /* CÁC BIẾN MÀU CHỦ ĐẠO */
+    --primary-bg: #8e44ad;      /* Nền thanh điều hướng (Tím Sẫm) */
+    --secondary-bg: #9b59b6;    /* Nền phụ/Menu Mobile */
+    --accent-color: #e84393;    /* Màu nhấn chính (Hồng Đậm/Cánh Bướm) */
+    --danger-color: #c0392b;    
+    --text-light: #ecf0f1;      
+    --text-dark: #2c3e50;       
+    --card-bg: #ffffff;         
+    --border-color: #bdc3c7;    
+
+    /* Biến CSS cho JS điều khiển chuyển động mắt */
+    --pupil-x: 0px; 
+    --pupil-y: 0px; 
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--text-light);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+/* --- LOGIN CONTAINER VÀ FORM --- */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--primary-bg), var(--accent-color)); 
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.login-box {
+    background: var(--card-bg);
+    padding: 20px 40px 40px 40px; 
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    position: relative; 
+    overflow: visible; 
+}
+
+.form-title {
+    color: var(--accent-color); 
+    margin-top: 50px; 
+    border-bottom: none;
+    margin-bottom: 30px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.login-box input[type="text"],
+.login-box input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 1em;
+}
+
+.login-box input:focus {
+    border-color: var(--accent-color);
+    outline: none;
+    box-shadow: 0 0 5px rgba(232, 67, 147, 0.5); 
+}
+
+.login-button {
+    background-color: var(--accent-color);
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.1s;
+    user-select: none;
+}
+.login-button:hover { background-color: #c44d97; }
+.login-button:active { transform: scale(0.98); }
+
+/* --- CSS CHO MASCOT (NHÂN VẬT HÌNH CON BƯỚM 🦋) --- */
+.mascot-head {
+    position: absolute;
+    top: -80px; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px; 
+    height: 120px; 
+    background-color: transparent; 
+    z-index: 20; 
+}
+
+/* TẠO CÁNH BƯỚM */
+.mascot-head::before,
+.mascot-head::after {
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: var(--accent-color); 
+    border-radius: 60% 40% 60% 40% / 60% 60% 40% 40%; 
+    box-shadow: 0 0 15px rgba(232, 67, 147, 0.5);
+    transition: transform 0.5s ease-in-out; 
+}
+
+.mascot-head::before {
+    left: 0;
+    top: 10px;
+    transform: rotate(-20deg); 
+    transform-origin: 100% 50%; 
+}
+
+.mascot-head::after {
+    right: 0;
+    top: 10px;
+    transform: rotate(20deg); 
+    transform-origin: 0% 50%; 
+}
+
+/* ĐẶT MẮT TRÊN THÂN BƯỚM (Ở GIỮA) */
+.eyes {
+    position: absolute;
+    top: 35px; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px; 
+    display: flex;
+    justify-content: space-around;
+    box-sizing: border-box;
+    z-index: 30; 
+}
+
+.eye {
+    width: 18px; 
+    height: 18px;
+    background-color: var(--card-bg); 
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden; 
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2); 
+}
+
+/* Con ngươi (Sử dụng biến từ JS) */
+.eye::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* SỬ DỤNG BIẾN PUPIL DO JS THIẾT LẬP */
+    transform: translate(calc(-50% + var(--pupil-x, 0px)), calc(-50% + var(--pupil-y, 0px))); 
+    width: 6px; 
+    height: 6px;
+    background-color: black;
+    border-radius: 50%;
+    transition: transform 0.1s linear; 
+}
+
+/* CSS Che mắt (khi nhập Mật khẩu) */
+.eye::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--accent-color); 
+    transition: transform 0.3s ease-in-out;
+    transform-origin: top; 
+    transform: scaleY(0); 
+    z-index: 10;
+}
+
+.eye.closed-eye::after {
+    transform: scaleY(1); 
+}
+
+/* Ẩn body/tay không cần thiết */
+.mascot-body-base {
+    display: none; 
+}
+
+/* ---------------------------------------------------------------------- */
+
+/* --- GLOBAL UTILITIES & DASHBOARD --- */
+.container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+    box-sizing: border-box;
+}
+
+h2, h3 {
+    color: var(--primary-bg);
+}
+
+h2 {
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+}
+
+/* --- Navigation Bar --- */
+.navbar {
+    background-color: var(--primary-bg); 
+    padding: 15px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* ... (GIỮ NGUYÊN CSS CỦA NAVBAR, FEATURE-GRID, và RESPONSIVE) ... */
+
+
+/* --- STYLES CHO CHỨC NĂNG NHẬT KÝ (chucnang_02.html) --- */
+
+/* Khu vực nhập liệu */
+.diary-input-section {
+    background: var(--secondary-bg); 
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+}
+
+.diary-input-section h3 {
+    color: var(--text-light);
+    margin-top: 0;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 10px;
+}
+
+#new-entry-form input[type="text"],
+#new-entry-form textarea,
+#new-entry-form input[type="date"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 1em;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: var(--text-dark);
+}
+
+#new-entry-form textarea {
+    resize: vertical;
+}
+
+.add-button {
+    background-color: var(--accent-color);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.1s;
+    width: 100%;
+}
+
+.add-button:hover {
+    background-color: #c44d97; 
+}
+.add-button:active {
+    transform: scale(0.99);
+}
+
+/* Hiển thị danh sách nhật ký */
+.diary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.diary-card {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    border-left: 5px solid var(--accent-color); 
+    transition: transform 0.2s;
+}
+
+.diary-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.diary-card h4 {
+    color: var(--primary-bg);
+    margin-top: 0;
+    font-size: 1.1em;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    border-bottom: 1px dashed var(--border-color);
+    padding-bottom: 5px;
+}
+
+.entry-date {
+    font-size: 0.85em;
+    color: #888;
+    font-style: italic;
+}
+
+.entry-content-preview {
+    font-size: 0.9em;
+    color: #555;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 15px;
+}
+
+.view-detail-btn {
+    background-color: var(--primary-bg);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s;
+}
+
+.view-detail-btn:hover {
+    background-color: var(--secondary-bg);
+}
+
+/* MEDIA QUERIES cho điện thoại */
+/* ... (GIỮ NGUYÊN CSS RESPONSIVE) ... */
