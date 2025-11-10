@@ -1,1 +1,87 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nhật Ký 📝 - Hệ Thống Của Hưởng</title>
+    <link rel="stylesheet" href="../style.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="navbar">
+        <button class="menu-toggle" aria-expanded="false" aria-controls="main-nav-links">☰</button>
+        <a href="dashboard.html" class="nav-brand">HỆ THỐNG CỦA HƯỞNG ✨</a>
+        
+        <div class="nav-links" id="main-nav-links">
+            <a href="dashboard.html" title="Tổng Quan">Tổng Quan</a>
+            <a href="chucnang_01.html" title="Album">Album 💖</a>
+            <a href="chucnang_02.html" class="active" title="Nhật Ký">Nhật Ký 📝</a>
+            <a href="chucnang_03.html" title="Sở Thích">Sở Thích</a>
+            <a href="chucnang_04.html" title="Công Việc">Công Việc</a>
+            <a href="chucnang_05.html" title="Bạn Bè">Bạn Bè</a>
+            <a href="chucnang_06.html" title="Mục Tiêu">Mục Tiêu</a>
+            <a href="chucnang_07.html" title="Sức Khỏe">Sức Khỏe</a>
+            <a href="chucnang_08.html" title="Thống Kê">Thống Kê</a>
+            <a href="chucnang_09.html" title="Ghi Chú">Ghi Chú</a>
+            <a href="#" onclick="logout()" class="logout-btn" title="Đăng Xuất">Đăng Xuất</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Nhật Ký Kỷ Niệm Của Trần Chí Hưởng & Nguyễn Bảo Ngọc 📝</h2>
+        <p>Ghi lại những khoảnh khắc đáng nhớ và những điều bạn muốn chia sẻ.</p>
+
+        <div class="diary-input-section">
+            <h3>Thêm Khoảnh Khắc Mới</h3>
+            <form id="new-entry-form">
+                <input type="text" id="entry-title" placeholder="Tiêu đề (Ví dụ: Kỷ niệm 1 năm yêu nhau)" required>
+                <textarea id="entry-content" rows="6" placeholder="Nội dung chi tiết của ngày hôm nay..." required></textarea>
+                <input type="date" id="entry-date" required>
+                <button type="submit" class="add-button">
+                    <i class="fas fa-heart"></i> Lưu Khoảnh Khắc
+                </button>
+            </form>
+        </div>
+        
+        <div class="diary-list-section">
+            <h3>Những Kỷ Niệm Đã Ghi Lại</h3>
+            <div id="diary-entries-container" class="diary-grid">
+                
+                <div class="diary-card">
+                    <div class="card-header">
+                        <h4>Ngày đầu tiên Bảo Ngọc đến thăm Hưởng</h4>
+                        <span class="entry-date">20/11/2024</span>
+                    </div>
+                    <p class="entry-content-preview">Hôm đó trời mưa nhẹ, nhưng khoảnh khắc em bước vào cửa nhà, mọi thứ đều sáng bừng. Kỷ niệm về món bún bò Huế em nấu vẫn luôn ngọt ngào...</p>
+                    <button class="view-detail-btn">Xem chi tiết</button>
+                </div>
+
+                <div class="diary-card">
+                    <div class="card-header">
+                        <h4>Buổi hẹn hò xem phim "Up"</h4>
+                        <span class="entry-date">10/05/2025</span>
+                    </div>
+                    <p class="entry-content-preview">Cả hai đứa đã khóc rất nhiều vì câu chuyện cảm động. Hứa với em mình sẽ có một ngôi nhà màu tím hạnh phúc như thế...</p>
+                    <button class="view-detail-btn">Xem chi tiết</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../script.js"></script> 
+    <script>
+        // Thiết lập ngày mặc định là hôm nay
+        document.addEventListener('DOMContentLoaded', () => {
+            const dateInput = document.getElementById('entry-date');
+            if (dateInput) {
+                const today = new Date().toISOString().split('T')[0];
+                dateInput.value = today;
+            }
+        });
+        
+        // Cần thêm logic JS để lưu/hiển thị nhật ký nếu bạn muốn
+        // Hiện tại chỉ là HTML tĩnh.
+    </script>
+</body>
+</html>
 
