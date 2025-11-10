@@ -1,7 +1,7 @@
    // script.js (PHIÊN BẢN HOÀN CHỈNH)
 
 // Dữ liệu bí mật để đăng nhập
-const USERNAME_BIMAT = "huong";
+const USERNAME_BIMAT = "Baongoc";
 const PASSWORD_BIMAT = "ngoc2011"; 
 
 // --- LOGIC ĐĂNG NHẬP ---
