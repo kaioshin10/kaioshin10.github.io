@@ -1,7 +1,7 @@
-// script.js (PHIÊN BẢN HOÀN CHỈNH)
+   // script.js (PHIÊN BẢN HOÀN CHỈNH)
 
 // Dữ liệu bí mật để đăng nhập
-const USERNAME_BIMAT = "Baongoc";
+const USERNAME_BIMAT = "huong";
 const PASSWORD_BIMAT = "ngoc2011"; 
 
 // --- LOGIC ĐĂNG NHẬP ---
@@ -134,3 +134,4 @@ document.addEventListener('DOMContentLoaded', () => {
         setupHamburgerMenu(); 
     }
 });
+      
