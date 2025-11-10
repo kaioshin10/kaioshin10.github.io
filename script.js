@@ -1,8 +1,8 @@
-// script.js
+// script.js (PHIÊN BẢN HOÀN CHỈNH - LOGIC ĐĂNG NHẬP VÀ MASCOT)
 
 // Dữ liệu bí mật để đăng nhập (Client-side check)
 const USERNAME_BIMAT = "Baongoc";
-const PASSWORD_BIMAT = "ngoc2011"; // script.js (PHIÊN BẢN CÓ HIỆU ỨNG  
+const PASSWORD_BIMAT = "ngoc2011"; 
 
 // --- LOGIC ĐĂNG NHẬP ---
 function xuLyDangNhap(event) {
@@ -20,11 +20,13 @@ function xuLyDangNhap(event) {
     }
 }
 
-// --- LOGIC KIỂM TRA ĐĂNG NHẬP VÀ MENU (GIỮ NGUYÊN) ---
+// --- LOGIC KIỂM TRA ĐĂNG NHẬP VÀ MENU ---
 function kiemTraDangNhap() {
     const isLoggedIn = sessionStorage.getItem('loggedIn');
+    // Chỉ kiểm tra nếu KHÔNG phải trang index
     if (isLoggedIn !== 'true' && window.location.href.indexOf('index.html') === -1) {
         alert("Bạn cần đăng nhập để truy cập trang này!");
+        // Đường dẫn đã sửa: trỏ ra thư mục gốc
         window.location.href = "../index.html"; 
     }
 }
@@ -50,7 +52,7 @@ function setupHamburgerMenu() {
     }
 }
 
-// --- LOGIC CHUYỂN ĐỘNG MASCOT (MỚI) ---
+// --- LOGIC CHUYỂN ĐỘNG MASCOT ---
 function setupMascotAnimation() {
     const usernameInput = document.getElementById('username');
     const passwordInput = document.getElementById('password');
@@ -61,23 +63,18 @@ function setupMascotAnimation() {
     // 1. Logic che mắt khi nhập mật khẩu
     passwordInput.addEventListener('focus', () => {
         eyes.forEach(eye => {
-            // Thêm class để che mắt
             eye.classList.add('closed-eye'); 
-            eye.classList.remove('uncover');
         });
     });
 
     passwordInput.addEventListener('blur', () => {
         eyes.forEach(eye => {
-            // Mở mắt
             eye.classList.remove('closed-eye');
-            eye.classList.add('uncover');
         });
     });
 
     // 2. Logic nhìn theo khi nhập Username
     usernameInput.addEventListener('input', (e) => {
-        // Lấy tọa độ con chuột (hoặc trung tâm input)
         const targetElement = e.target;
         
         // Tính toán vị trí tâm input để con ngươi nhìn vào
@@ -91,13 +88,11 @@ function setupMascotAnimation() {
             // Tính góc (Angle) giữa mắt và tâm input
             const angle = Math.atan2(inputCenter.y - eyeCenter.y, inputCenter.x - eyeCenter.x);
             
-            // Tính toán vị trí con ngươi
-            const pupil = eye.querySelector('::before');
             // Giới hạn khoảng cách di chuyển để con ngươi không ra ngoài (khoảng 8px)
             const x = Math.cos(angle) * 8; 
             const y = Math.sin(angle) * 8;
 
-            // Di chuyển con ngươi bằng CSS transform
+            // Di chuyển con ngươi bằng cách thiết lập biến CSS
             eye.style.setProperty('--pupil-x', `${x}px`);
             eye.style.setProperty('--pupil-y', `${y}px`);
         });
