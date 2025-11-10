@@ -3,71 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Trang Tổng Quan</title>
-    <link rel="stylesheet" href="../style.css">
+    <title>Dashboard - Hệ Thống Của Hưởng ✨</title>
+    <link rel="stylesheet" href="../style.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-
     <div class="navbar">
+        <button class="menu-toggle" aria-expanded="false" aria-controls="main-nav-links">☰</button>
         <a href="dashboard.html" class="nav-brand">HỆ THỐNG CỦA HƯỞNG ✨</a>
         
-        <button class="menu-toggle" aria-expanded="false" aria-controls="main-nav-links">
-            ☰
-        </button>
-        
         <div class="nav-links" id="main-nav-links">
-            <a href="dashboard.html" class="active">Tổng Quan</a>
-            <a href="chucnang_01.html">Album 💖</a>
-            <a href="chucnang_02.html">Nhật Ký 📝</a>
-            <a href="chucnang_03.html">Sở Thích</a>
-            <a href="chucnang_04.html">Công Việc</a>
-            <a href="chucnang_05.html">Bạn Bè</a>
-            <a href="chucnang_06.html">Mục Tiêu</a>
-            <a href="chucnang_07.html">Sức Khỏe</a>
-            <a href="chucnang_08.html">Thống Kê</a>
-            <a href="chucnang_09.html">Ghi Chú</a>
-            <a href="chucnang_10.html">Settings</a>
-
-            <a href="#" class="logout-btn" onclick="dangXuat()">Đăng Xuất</a>
+            <a href="dashboard.html" class="active" title="Tổng Quan"><i class="fas fa-home"></i> Tổng Quan</a>
+            <a href="chucnang_01.html" title="Album"><i class="fas fa-camera-retro"></i> Album</a>
+            <a href="chucnang_02.html" title="Nhật Ký"><i class="fas fa-pencil-alt"></i> Nhật Ký</a>
+            <a href="chucnang_03.html" title="Sở Thích"><i class="fas fa-book-heart"></i> Sở Thích</a>
+            <a href="chucnang_04.html" title="Công Việc"><i class="fas fa-briefcase"></i> Công Việc</a>
+            <a href="chucnang_05.html" title="Bạn Bè"><i class="fas fa-user-friends"></i> Bạn Bè</a>
+            <a href="chucnang_06.html" title="Mục Tiêu"><i class="fas fa-bullseye"></i> Mục Tiêu</a>
+            <a href="chucnang_07.html" title="Sức Khỏe"><i class="fas fa-heartbeat"></i> Sức Khỏe</a>
+            <a href="chucnang_08.html" title="Thống Kê"><i class="fas fa-chart-line"></i> Thống Kê</a>
+            <a href="chucnang_09.html" title="Ghi Chú"><i class="fas fa-sticky-note"></i> Ghi Chú</a>
+            <a href="#" onclick="logout()" class="logout-btn" title="Đăng Xuất">Đăng Xuất</a>
         </div>
     </div>
+
     <div class="container">
-        <h2>👋 CHÀO MỪNG, TRẦN CHÍ HƯỞNG!</h2>
-        <p>Bạn đã đăng nhập thành công. Đây là trang tổng quan các chức năng cá nhân của bạn.</p>
+        <h2 class="welcome-heading">
+            <i class="fas fa-hands-clapping" style="color: var(--accent-color);"></i> CHÀO MỪNG, TRẦN CHÍ HƯỞNG!
+        </h2>
+        <p class="intro-text">
+            Đây là trang tổng quan các chức năng cá nhân của bạn, được xây dựng dành riêng cho bạn và **Nguyễn Bảo Ngọc** (sinh nhật: 20/11/2007).
+        </p>
 
-        <h3>Danh Sách 10 Chức Năng</h3>
+        <hr>
 
+        <h3>Danh Sách 10 Chức Năng Chính</h3>
+        
         <div class="feature-grid">
             
-            <a href="chucnang_01.html" class="feature-card">
-                <h3>1. Album 💖</h3>
-                <p>Xem lại hình ảnh, video kỷ niệm với người ấy.</p>
+            <a href="chucnang_01.html" class="feature-card" style="animation-delay: 0.1s;">
+                <h3>1. Album <i class="fas fa-camera-retro" style="color: var(--accent-color);"></i></h3>
+                <p>Xem lại hình ảnh, video kỷ niệm lãng mạn với người ấy.</p>
             </a>
 
-            <a href="chucnang_02.html" class="feature-card">
-                <h3>2. Nhật Ký 📝</h3>
-                <p>Ghi lại những khoảnh khắc đáng nhớ.</p>
+            <a href="chucnang_02.html" class="feature-card" style="animation-delay: 0.2s;">
+                <h3>2. Nhật Ký <i class="fas fa-pencil-alt" style="color: var(--primary-bg);"></i></h3>
+                <p>Ghi lại những khoảnh khắc đáng nhớ, cảm xúc và suy nghĩ.</p>
             </a>
-
-            <a href="chucnang_03.html" class="feature-card"><h3>3. Sở Thích</h3><p>Quản lý các hoạt động yêu thích.</p></a>
-            <a href="chucnang_04.html" class="feature-card"><h3>4. Công Việc</h3><p>Theo dõi tiến độ học tập và công việc.</p></a>
-            <a href="chucnang_05.html" class="feature-card"><h3>5. Bạn Bè</h3><p>Danh sách và thông tin liên lạc bạn bè.</p></a>
-            <a href="chucnang_06.html" class="feature-card"><h3>6. Mục Tiêu</h3><p>Đặt và theo dõi các mục tiêu cá nhân.</p></a>
-            <a href="chucnang_07.html" class="feature-card"><h3>7. Sức Khỏe</h3><p>Ghi chép và theo dõi tình trạng sức khỏe.</p></a>
-            <a href="chucnang_08.html" class="feature-card"><h3>8. Thống Kê</h3><p>Xem tổng quan về các hoạt động.</p></a>
-            <a href="chucnang_09.html" class="feature-card"><h3>9. Ghi Chú</h3><p>Ghi lại nhanh những điều cần nhớ.</p></a>
-            <a href="chucnang_10.html" class="feature-card"><h3>10. Settings</h3><p>Cài đặt tài khoản và giao diện.</p></a>
             
-        </div>
-    </div>
+            <a href="chucnang_03.html" class="feature-card" style="animation-delay: 0.3s;">
+                <h3>3. Sở Thích <i class="fas fa-book-heart" style="color: var(--accent-color);"></i></h3>
+                <p>Quản lý các hoạt động yêu thích, sách, phim hay ho.</p>
+            </a>
 
-    <script>
-        function dangXuat() {
-            sessionStorage.removeItem('loggedIn'); 
-            // Đường dẫn đã sửa: trỏ ra thư mục gốc
-            window.location.href = "../index.html"; 
-        }
-    </script>
-    <script src="../script.js"></script>
+            <a href="chucnang_04.html" class="feature-card" style="animation-delay: 0.4s;">
+                <h3>4. Công Việc <i class="fas fa-briefcase" style="color: var(--primary-bg);"></i></h3>
+                <p>Theo dõi các dự án, nhiệm vụ và tiến độ công việc.</p>
+            </a>
+
+            <a href="chucnang_05.html" class="feature-card" style="animation-delay: 0.5s;">
+                <h3>5. Bạn Bè <i class="fas fa-user-friends" style="color: var(--accent-color);"></i></h3>
+                <p>Lưu trữ thông tin và lịch hẹn với bạn bè, người thân.</p>
+            </a>
+
+            <a href="chucnang_06.html" class="feature-card" style="animation-delay: 0.6s;">
+                <h3>6. Mục Tiêu <i class="fas fa-bullseye" style="color: var(--primary-bg);"></i></h3>
+                <p>Thiết lập và theo dõi các mục tiêu ngắn/dài hạn.</p>
+            </a>
+
+            <a href="chucnang_07.html" class="feature-card" style="animation-delay: 0.7s;">
+                <h3>7. Sức Khỏe <i class="fas fa-heartbeat" style="color: var(--accent-color);"></i></h3>
+                <p>Ghi lại các chỉ số, lịch tập luyện và chế độ ăn uống.</p>
+            </a>
+
+            <a href="chucnang_08.html" class="feature-card" style="animation-delay: 0.8s;">
+                <h3>8. Thống Kê <i class="fas fa-chart-line" style="color: var(--primary-bg);"></i></h3>
+                <p>Xem biểu đồ và số liệu tổng hợp các hoạt động.</p>
+            </a>
+
+            <a href="chucnang_09.html" class="feature-card" style="animation-delay: 0.9s;">
+                <h3>9. Ghi Chú <i class="fas fa-sticky-note" style="color: var(--accent-color);"></i></h3>
+                <p>Ghi nhanh mọi ý tưởng, nhắc nhở cá nhân.</p>
+            </a>
+            
+            <a href="#" class="feature-card" style="opacity: 0.6; cursor: default; animation-delay: 1.0s;">
+                <h3>10. Cài Đặt <i class="fas fa-cog" style="color: #555;"></i></h3>
+                <p>Chức năng đang được phát triển...</p>
+            </a>
+
+        </div>
+        </div>
+    
+    <script src="../script.js"></script> 
 </body>
 </html>
+
+    
